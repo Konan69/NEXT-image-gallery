@@ -2,7 +2,6 @@
 
 export {
   Container,
-  SSRProvider,
   Nav,
   Alert,
   Spinner,

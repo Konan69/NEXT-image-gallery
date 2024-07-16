@@ -1,6 +1,7 @@
 import { UnsplashUser } from "@/models/unsplash-user";
 import { cache } from "react";
 import { notFound } from "next/navigation";
+import { Alert } from "@/components/bootstrap";
 
 interface PageProps {
   params: { username: string };
@@ -26,9 +27,12 @@ export async function generateMetadata({ params: { username } }: PageProps) {
 
 export default async function Page({ params: { username } }: PageProps) {
   const user = await getUser(username);
-
   return (
     <div>
+      <Alert>
+        this profile page uses <strong>generateMetadata</strong> to set the page
+        title dynamically from the api response{" "}
+      </Alert>
       <h1>{user.username}</h1>
       <p>First name: {user.first_name}</p>
       <p>Last name: {user.last_name}</p>
