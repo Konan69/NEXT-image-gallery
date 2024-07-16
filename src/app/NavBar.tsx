@@ -17,7 +17,7 @@ export default function NavBar() {
     >
       <Container>
         <Navbar.Brand as={Link} href="/">
-          Nextjs Image Gallery
+          NEXTJS Image Gallery
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse className="" id="main-navbar">
