@@ -7,4 +7,5 @@ export {
   Alert,
   Spinner,
   Navbar,
+  NavDropdown,
 } from "react-bootstrap";

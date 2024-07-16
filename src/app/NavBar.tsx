@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Navbar, Nav } from "@/components/bootstrap";
+import { Container, Navbar, Nav, NavDropdown } from "@/components/bootstrap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -24,7 +24,7 @@ export default function NavBar() {
           <Navbar.Text>
             Signed in as: <a href="#login">Mark Otto</a>
           </Navbar.Text>
-          <Nav className="flex-row gap-2">
+          <Nav className="flex-row gap-4">
             <Nav.Link as={Link} href="/static" active={pathname === "/static"}>
               Static
             </Nav.Link>
@@ -38,6 +38,17 @@ export default function NavBar() {
             <Nav.Link as={Link} href="/isr" active={pathname === "/isr"}>
               ISR
             </Nav.Link>
+            <NavDropdown title="Topics" id="topics-dropdown">
+              <NavDropdown.Item as={Link} href="/topics/health">
+                Health
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} href="/topics/fitness">
+                Fitness
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} href="/topics/coding">
+                Coding
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
