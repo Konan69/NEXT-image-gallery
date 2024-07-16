@@ -24,7 +24,7 @@ export default function NavBar() {
           <Navbar.Text>
             Signed in as: <a href="#login">Mark Otto</a>
           </Navbar.Text>
-          <Nav>
+          <Nav className="flex-row gap-2">
             <Nav.Link as={Link} href="/static" active={pathname === "/static"}>
               Static
             </Nav.Link>
@@ -33,7 +33,10 @@ export default function NavBar() {
               href="/dynamic"
               active={pathname === "/dynamic"}
             >
-              Dynamic
+              Dynamic{" "}
+            </Nav.Link>
+            <Nav.Link as={Link} href="/isr" active={pathname === "/isr"}>
+              ISR
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

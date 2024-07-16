@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Alert } from "@/components/bootstrap";
 
 export const metadata = {
-  title: "Dynamic Fetching Load Images",
+  title: "Incremental Static Regeneration to Load Images",
 };
 
 // export const revalidate = 0; tells nextjs how often to revalidate the page
@@ -13,8 +13,8 @@ export default async function Page() {
   const response = await fetch(
     "https://api.unsplash.com/photos/random?client_id=" + process.env.ACCESSKEY,
     {
-      cache: "no-store",
-      // next: { revalidate: 0 },
+      // cache: "no-store",
+      next: { revalidate: 15 },
     }, //same revalidation effect
   );
   const image: UnsplashImage = await response.json();
@@ -25,10 +25,8 @@ export default async function Page() {
   return (
     <div className="d-flex flex-column align-items-center">
       <Alert>
-        This page{" "}
-        <strong>fetches and does not cache data at build time </strong>
-        We will see a new image after refreshing, after setting revalidation
-        options
+        This page uses <strong>incremental static regeneration </strong>A new
+        image can be fetched after 15 seconds
       </Alert>
       <Image
         src={image.urls.raw}
