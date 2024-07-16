@@ -1,4 +1,5 @@
 import { UnsplashUser } from "@/models/unsplash-user";
+import { cache } from "react";
 import { notFound } from "next/navigation";
 
 interface PageProps {
@@ -16,10 +17,12 @@ export async function generateMetadata({ params: { username } }: PageProps) {
   const user = await getUser(username);
   return {
     title:
-      [user.first_name, user.last_name].filter(Boolean).join(" ") ||
-      user.username + " profile",
+      ([user.first_name, user.last_name].filter(Boolean).join(" ") ||
+        user.username) + " profile",
   };
 }
+
+// const getUserCached = cache(getUser) use cache if not using native fetch func
 
 export default async function Page({ params: { username } }: PageProps) {
   const user = await getUser(username);
