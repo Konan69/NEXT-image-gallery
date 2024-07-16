@@ -4,8 +4,10 @@ import Link from "next/link";
 import { Alert } from "@/components/bootstrap";
 
 export const metadata = {
-  title: "Load Images",
+  title: "Dynamic Fetching Load Images",
 };
+
+export const revalidate = 0; //tells nextjs how often to revalidate the page
 
 export default async function Page() {
   const response = await fetch(
@@ -17,9 +19,9 @@ export default async function Page() {
   const height = (width / image.width) * image.height;
 
   return (
-    <div className="d-flex flex-column aligh-items-center">
+    <div className="d-flex flex-column align-items-center">
       <Alert>
-        This page <strong>fetches and caches data at build time </strong>
+        This page <strong>fetches and doesn't cache data at build time </strong>
         Even though the unsplash API always returns a new image, we will see the
         same image after refreshing, unless we compile the project again
       </Alert>
