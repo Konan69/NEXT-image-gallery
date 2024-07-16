@@ -25,8 +25,8 @@ export default function NavBar() {
             Signed in as: <a href="#login">Mark Otto</a>
           </Navbar.Text>
           <Nav>
-            <Nav.Link as={Link} href="/hello" active={pathname === "/hello"}>
-              Hello
+            <Nav.Link as={Link} href="/static" active={pathname === "/static"}>
+              Static
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
