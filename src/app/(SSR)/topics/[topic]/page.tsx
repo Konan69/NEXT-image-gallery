@@ -11,6 +11,10 @@ interface PageProps {
 
 // export const revalidate = 0
 
+export async function generateStaticParams() {
+  return ["health", "fitness", "coding"].map((topic) => ({ topic }));
+}
+
 export default async function Page({ params: { topic } }: PageProps) {
   const response = await fetch(
     `https://api.unsplash.com/photos/random?query=${topic}&count=3&client_id=${process.env.ACCESSKEY}`,
