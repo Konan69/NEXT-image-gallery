@@ -7,11 +7,15 @@ export const metadata = {
   title: "Dynamic Fetching Load Images",
 };
 
-export const revalidate = 0; //tells nextjs how often to revalidate the page
+// export const revalidate = 0; tells nextjs how often to revalidate the page
 
 export default async function Page() {
   const response = await fetch(
     "https://api.unsplash.com/photos/random?client_id=" + process.env.ACCESSKEY,
+    {
+      cache: "no-store",
+      // next: { revalidate: 0 },
+    }, //same revalidation effect
   );
   const image: UnsplashImage = await response.json();
 
@@ -22,8 +26,8 @@ export default async function Page() {
     <div className="d-flex flex-column align-items-center">
       <Alert>
         This page <strong>fetches and doesn't cache data at build time </strong>
-        Even though the unsplash API always returns a new image, we will see the
-        same image after refreshing, unless we compile the project again
+        We will see a new image after refreshing, after setting revalidation
+        options
       </Alert>
       <Image
         src={image.urls.raw}
