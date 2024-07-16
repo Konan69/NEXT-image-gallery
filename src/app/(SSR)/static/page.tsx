@@ -17,7 +17,7 @@ export default async function Page() {
   const height = (width / image.width) * image.height;
 
   return (
-    <div className="d-flex flex-column aligh-items-center">
+    <div className="d-flex flex-column align-items-center">
       <Alert>
         This page <strong>fetches and caches data at build time </strong>
         Even though the unsplash API always returns a new image, we will see the
